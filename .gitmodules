@@ -1,0 +1,3 @@
+[submodule "src/submodules/backend-social-1.0-entities"]
+	path = src/submodules/backend-social-1.0-entities
+	url = git@github.com:TrueAmrit/backend-social-1.0-entities.git
