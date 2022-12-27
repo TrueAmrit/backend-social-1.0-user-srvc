@@ -16,6 +16,7 @@ import { User } from './submodules/backend-social-1.0-entities/src/entities/user
       database: 'backend-socialmedia',
       entities: [User],
       synchronize: true,
+      logging: true,
     }),
     UserModule
   ],
