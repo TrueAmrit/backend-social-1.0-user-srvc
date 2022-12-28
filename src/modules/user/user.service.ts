@@ -13,7 +13,7 @@ export class UserService {
 
   async createUser(user: UserDto) {
     try {
-      let userEntity = await this.userRepsitory.create(user);
+      let userEntity = this.userRepsitory.create(user);
       let createdUser = await this.userRepsitory.save(userEntity);
       return createdUser;
     } catch (err) {
