@@ -4,9 +4,10 @@ import { UserController } from './user.controller';
 import { User } from 'src/submodules/backend-social-1.0-entities/src/entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Content } from 'src/submodules/backend-social-1.0-entities/src/entities/content.entity';
+import { Option } from 'src/submodules/backend-social-1.0-entities/src/entities/option.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, Content])],
+  imports: [TypeOrmModule.forFeature([User, Content, Option])],
   controllers: [UserController],
   providers: [UserService],
 })

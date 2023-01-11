@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
 import { Content } from './submodules/backend-social-1.0-entities/src/entities/content.entity';
+import { Option } from './submodules/backend-social-1.0-entities/src/entities/option.entity';
 import { User } from './submodules/backend-social-1.0-entities/src/entities/user.entity';
 
 @Module({
@@ -15,7 +16,7 @@ import { User } from './submodules/backend-social-1.0-entities/src/entities/user
       username: 'amritgupta1018',
       password: 'XOMjT6aq3Ibp',
       database: 'neondb',
-      entities: [User, Content],
+      entities: [User, Content, Option],
       synchronize: true,
       logging: true,
       ssl: true,
