@@ -8,13 +8,13 @@ import { Repository } from 'typeorm';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private userRepsitory: Repository<User>,
+    private userRepository: Repository<User>,
   ) {}
 
   async createUser(user: UserDto) {
     try {
-      let userEntity = this.userRepsitory.create(user);
-      let createdUser = await this.userRepsitory.save(userEntity);
+      const userEntity = this.userRepository.create(user);
+      const createdUser = await this.userRepository.save(userEntity);
       return createdUser;
     } catch (err) {
       throw err;
@@ -23,7 +23,7 @@ export class UserService {
 
   async findAll() {
     try {
-      let retrievedUser = await this.userRepsitory.find();
+      const retrievedUser = await this.userRepository.find();
       return retrievedUser;
     } catch (err) {
       throw err;
@@ -31,16 +31,16 @@ export class UserService {
   }
   async updateUser(user: UserDto) {
     try {
-      let updatedUser = await this.userRepsitory.update(user.id, user);
+      const updatedUser = await this.userRepository.update(user.id, user);
       return updatedUser;
     } catch (err) {
       throw err;
     }
   }
 
-  async deleteUser(userId: number){
+  async deleteUser(userId: number) {
     try {
-      let deletedUser = await this.userRepsitory.delete(userId);
+      const deletedUser = await this.userRepository.delete(userId);
       return deletedUser;
     } catch (err) {
       throw err;

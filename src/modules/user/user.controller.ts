@@ -17,7 +17,7 @@ export class UserController {
   @Post()
   async createUser(@Body() user: UserDto) {
     try {
-      let createdUser = await this.userService.createUser(user);
+      const createdUser = await this.userService.createUser(user);
       return createdUser;
     } catch (err) {
       console.log(err);
@@ -27,7 +27,7 @@ export class UserController {
   @Get()
   async findUser() {
     try {
-      let fetchedUser = await this.userService.findAll();
+      const fetchedUser = await this.userService.findAll();
       return fetchedUser;
     } catch (err) {
       console.log(err);
@@ -38,7 +38,7 @@ export class UserController {
   @Put()
   async updateUser(@Body() user: UserDto) {
     try {
-      let updatedUser = await this.userService.updateUser(user);
+      const updatedUser = await this.userService.updateUser(user);
       return updatedUser;
     } catch (err) {
       console.log(err);
@@ -49,7 +49,7 @@ export class UserController {
   @Delete(':id')
   async deleteUser(@Param('id') userId: number) {
     try {
-      let deletedUser = await this.userService.deleteUser(userId);
+      const deletedUser = await this.userService.deleteUser(userId);
       return deletedUser;
     } catch (err) {
       console.log(err);
