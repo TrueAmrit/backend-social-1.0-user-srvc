@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -11,13 +12,14 @@ import { User } from './submodules/backend-social-1.0-entities/src/entities/user
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'ep-soft-star-756347.us-east-2.aws.neon.tech',
+      host: process.env.DB_HOST,
       port: 5432,
-      username: 'amritgupta1018',
-      password: 'XOMjT6aq3Ibp',
-      database: 'neondb',
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASS,
+      database: process.env.DB,
       entities: [User, Content, Option, Group, Reaction],
       synchronize: false,
       logging: true,
