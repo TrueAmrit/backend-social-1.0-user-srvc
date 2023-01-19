@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserDto } from 'src/submodules/backend-social-1.0-dtos/src/dtos/user.dto';
+import { Group } from 'src/submodules/backend-social-1.0-entities/src/entities/group.entity';
 import { User } from 'src/submodules/backend-social-1.0-entities/src/entities/user.entity';
 import { Repository } from 'typeorm';
 
@@ -9,6 +10,8 @@ export class UserService {
   constructor(
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    @InjectRepository(Group)
+    private groupRepository: Repository<Group>,
   ) {}
 
   async createUser(user: UserDto) {
@@ -45,5 +48,14 @@ export class UserService {
     } catch (err) {
       throw err;
     }
+  }
+
+  async getGroupsByUser(userId: number) {
+    const fetchedGroups = await this.groupRepository.find({
+      where: {
+        users: { id: userId },
+      },
+    });
+    return fetchedGroups;
   }
 }

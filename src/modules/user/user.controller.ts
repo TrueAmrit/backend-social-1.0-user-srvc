@@ -6,6 +6,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { UserDto } from 'src/submodules/backend-social-1.0-dtos/src/dtos/user.dto';
 import { UserService } from './user.service';
@@ -54,6 +55,17 @@ export class UserController {
     } catch (err) {
       console.log(err);
       return err;
+    }
+  }
+  @Get('/group') //localhost:3000/user/group?userId=2 (for fetching all groups of a user)
+  async getUsersByGroup(@Query() query: { userId: number }) {
+    try {
+      const { userId } = query;
+      const fetchedGroups = await this.userService.getGroupsByUser(userId);
+
+      return fetchedGroups;
+    } catch (error) {
+      console.log(error);
     }
   }
 }
